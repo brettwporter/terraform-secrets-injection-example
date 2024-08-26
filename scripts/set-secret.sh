@@ -27,7 +27,7 @@ cd infra
 terraform init
 terraform apply -auto-approve -var="name=$NAME" -var="stage=$STAGE" -target="aws_secretsmanager_secret.this"
 
-CURRENT_SECRET=$(aws secretsmanager get-secret-value --secret-id $(terraform output -json secret_name | jq -r .) --query SecretString --output text)
+CURRENT_SECRET=$(aws secretsmanager get-secret-value --secret-id $(terraform output -json secret_name | jq -r .) --query SecretString --output text 2>/dev/null || echo "")
 
 if [ -n "$CURRENT_SECRET" ]; then
     UPDATED_SECRET=$(echo $CURRENT_SECRET | jq --arg key "$SECRET_NAME" --arg value "$SECRET_VALUE" '. + {($key): $value}')

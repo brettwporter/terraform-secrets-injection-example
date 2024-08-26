@@ -22,7 +22,7 @@ terraform apply -auto-approve -var="name=$NAME" -var="stage=$STAGE" -target="aws
 terraform refresh -var="name=$NAME" -var="stage=$STAGE"
 
 echo "Attempting to get secrets"
-SECRETS=$(aws secretsmanager get-secret-value --secret-id $(terraform output -json secret_name | jq -r .) --query SecretString --output text)
+SECRETS=$(aws secretsmanager get-secret-value --secret-id $(terraform output -json secret_name | jq -r .) --query SecretString --output text 2>/dev/null || echo "")
 
 echo "Running the website locally"
 if [ -n "$SECRETS" ]; then
