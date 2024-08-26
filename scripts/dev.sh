@@ -1,5 +1,17 @@
 #! /bin/bash
 
+# This script sets up and runs the development environment
+#
+# It does the following:
+#
+# 1. Retrieves remote secrets from AWS Secrets Manager
+# 2. Applies Terraform configuration for the secrets
+# 3. Fetches the secrets
+# 4. Runs the website locally with the retrieved secrets as environment variables
+#
+# Example:
+# ./dev.sh my-app-name development
+
 NAME=$1
 STAGE=$2
 

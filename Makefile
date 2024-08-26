@@ -27,10 +27,6 @@ set-secret:
 dev:
 	@./scripts/dev.sh "$(NAME)" "$${stage:-$(DEFAULT_STAGE)}"
 
-.PHONY: deploy
-deploy:
-	@./scripts/deploy.sh "$(NAME)" "$${stage:-$(DEFAULT_STAGE)}"
-
 .PHONY: destroy
 destroy:
 	@./scripts/destroy.sh "$(NAME)" "$${stage:-$(DEFAULT_STAGE)}"

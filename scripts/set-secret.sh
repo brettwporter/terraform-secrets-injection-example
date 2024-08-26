@@ -1,5 +1,16 @@
 #! /bin/bash
 
+# This script sets a secret in AWS Secrets Manager
+#
+# It does the following:
+#
+# 1. Applies the Terraform code to create a new secret if it doesn't exist
+# 2. Grab the current secret value
+# 3. Update the secret with the new or modified value
+#
+# Example:
+# ./set-secret name=my-app stage=dev secret_name=my_secret_name secret_value=my_secret_value
+
 NAME=$1
 STAGE=$2
 SECRET_NAME=$3
