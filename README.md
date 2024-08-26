@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Terraform SST-Inspired Secrets Management Example
+
+This repository demonstrates a simple example of utilizing Terraform and a process inspired by SST for managing secrets in a NextJS application. The setup allows you to:
+
+1. Store secret values securely in AWS Secrets Manager
+2. Inject these secrets into your local development environment
+3. Deploy and manage infrastructure using Terraform
+
+## Key Features
+
+- Secure secret management using AWS Secrets Manager
+- Local development with automatically injected secrets
+- Infrastructure as Code using Terraform
+- Makefile for easy command execution
+
+## Workflow
+
+Follow these steps to set up and run your application:
+
+1. Set your secrets:
+
+   ```
+   make set-secret name=<secret_name> value=<secret_value>
+   ```
+
+   Repeat this step for each secret your application needs.
+
+2. Start local development:
+
+   ```
+   make dev
+   ```
+
+   This command will:
+
+   - Apply the Terraform configuration
+   - Retrieve secrets from AWS Secrets Manager
+   - Inject the secrets as environment variables
+   - Run your NextJS app locally
+
+3. Develop your application with the injected secrets available as environment variables.
+
+4. When ready to deploy:
+
+   ```
+   make deploy
+   ```
+
+   This will deploy your infrastructure to AWS.
+
+5. To tear down the infrastructure:
+   ```
+   make destroy
+   ```
 
 ## Getting Started
 
-First, run the development server:
+1. Ensure you have Terraform, AWS CLI, and pnpm installed
+2. Clone this repository
+3. Run `make install` to install dependencies
+4. Set up your AWS credentials
+5. Run `make dev` to start the local development environment with injected secrets
+6. Use `make deploy` to deploy the infrastructure to AWS
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Available Commands
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `make dev`: Start local development with injected secrets
+- `make set-secret name=<secret_name> value=<secret_value>`: Set a secret value
+- `make deploy [stage=<stage_name>]`: Deploy the infrastructure
+- `make destroy`: Destroy the infrastructure
+- `make help`: Display help information
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Note
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This example is inspired by SST's approach to secret management but implemented using Terraform and commands within a Makefile. It provides a simplified way to manage secrets for developers while maintaining security best practices.

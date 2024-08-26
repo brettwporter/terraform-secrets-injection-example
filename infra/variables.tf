@@ -1,6 +1,7 @@
-variable "general_config" {
-  type = object({
-    name  = string
-    stage = string
-  })
+variable "stage" {
+  type = string
+}
+
+variable "name" {
+  type = string
 }
