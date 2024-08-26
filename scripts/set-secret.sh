@@ -35,5 +35,6 @@ else
     UPDATED_SECRET=$(echo "{\"$SECRET_NAME\":\"$SECRET_VALUE\"}" | jq .)
 fi
 
-# Update the secret with the new or modified value
-aws secretsmanager put-secret-value --secret-id $(terraform output -json secret_name | jq -r .) --secret-string "$UPDATED_SECRET"
+aws secretsmanager put-secret-value --secret-id $(terraform output -json secret_name | jq -r .) --secret-string "$UPDATED_SECRET" --output json > /dev/null
+
+echo "Secret updated successfully."

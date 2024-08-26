@@ -1,7 +1,7 @@
 # Terraform Secrets Management Example
 
 This repository demonstrates a simple example of utilizing Terraform and a process
-inspired by [SST](sst.dev) for managing secrets in a application without needed to
+inspired by [SST](sst.dev) for managing secrets in an application without needing to
 have them locally in an .env file for example. The setup allows you to:
 
 1. Store secret values securely in AWS Secrets Manager
@@ -34,7 +34,7 @@ Follow these steps to set up and run your application:
    This command will:
 
    - Apply the Terraform configuration for the secret
-   - Add or update the secret proviced
+   - Add or update the secret provided
 
    Repeat this step for each secret your application needs.
 
