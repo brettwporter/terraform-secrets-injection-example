@@ -14,10 +14,6 @@ is deployed to. By default it is to a stage of your local machines username.
 This approach can be expanded quite to do things such as run full cloud stacks per dev
 with hot reloads on code changes.
 
-Here is a video of how this operates:
-
-[Demo Video](./assets/demo.mp4)
-
 ## Key Features
 
 - Secure secret management using AWS Secrets Manager
